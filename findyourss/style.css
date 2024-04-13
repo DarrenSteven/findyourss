@@ -1,0 +1,448 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #f2efe5;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff transparent; /* Warna scrollbar thumb putih dan track transparan */
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+  height: 8px; /* Tinggi scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray; /* Warna scrollbar thumb */
+  border-radius: 4px; /* Membuat sudut thumb lebih bulat */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Warna track scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: grey; /* Warna scrollbar thumb saat dihover */
+  transition: background-color 0.3s; /* Efek transisi pada scrollbar thumb */
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  border-left: 1.2px solid #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+.sidebar ul li {
+  margin-bottom: 30px;
+  position: relative; /* Menambahkan posisi relatif */
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  font-size: x-large;
+  color: #333;
+  display: inline-block; /* Mengubah display menjadi inline-block */
+  position: relative; /* Menambahkan posisi relatif */
+  transition: 0.5s;
+}
+
+.sidebar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Menyesuaikan posisi underline */
+  width: 0; /* Awalnya panjang underline 0 */
+  height: 2px; /* Menyesuaikan ketebalan underline */
+  background-color: #333;
+  transition: width 0.3s ease; /* Animasi panjang underline */
+  z-index: 99;
+}
+
+.sidebar ul li a:hover::after {
+  width: 100%; /* Mengubah panjang underline menjadi 100% saat dihover */
+}
+
+.sidebar ul li a:hover {
+  font-weight: bold;
+}
+
+.-menu {
+  display: none; /* Menyembunyikan tombol  secara default */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.main {
+  margin-right: 220px;
+  padding: 20px;
+}
+
+.main .home {
+  height: 100vh;
+}
+
+.main .home .logo img {
+  width: 70px;
+}
+
+.main .home .hand {
+  position: absolute;
+  right: 200px;
+  top: -220px;
+  z-index: 0;
+}
+
+.main .home .hand img {
+  width: 700px;
+  transform: scaleX(-1);
+}
+
+.main .home .bot-left {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  bottom: 20px;
+}
+
+.main .home .bot-left .tagline {
+  font-size: 20px;
+}
+
+.main .home .bot-left .title {
+  font-size: 100px;
+}
+
+.main .about {
+  padding: 100px 0 0 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.main .about h1 {
+  font-size: 100px;
+}
+
+.main .about p {
+  text-align: justify;
+  padding-right: 100px;
+  font-size: 20px;
+}
+
+.main .about .p1 {
+  margin-bottom: 20px;
+}
+
+.main .about .img-about img {
+  width: 400px;
+}
+
+.main .htc {
+  padding: 100px 0 0 50px;
+}
+
+.main .htc h1 {
+  font-size: 100px;
+  margin-bottom: 50px;
+}
+
+.main .products {
+  padding: 100px 0 0 50px;
+}
+
+.main .products h1 {
+  font-size: 100px;
+}
+
+.main .products .card-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  width: 15.875em;
+  height: 16.5em;
+  box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 120ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #212c3c;
+  padding: 0.5em;
+  padding-bottom: 3.4em;
+}
+
+.card::after {
+  content: ":)";
+  padding-top: 1.25em;
+  padding-left: 1.25em;
+  position: absolute;
+  left: 0;
+  bottom: -60px;
+  background: #c7c8cc;
+  color: black;
+  height: 2.5em;
+  width: 91.9%;
+  transition: all 80ms;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.card .title {
+  font-size: 0.9em;
+  position: absolute;
+  left: 0.625em;
+  bottom: 1.875em;
+  font-weight: 400;
+  color: white;
+  background-color: #212c3c;
+}
+
+.card .price {
+  font-size: 0.9em;
+  position: absolute;
+  left: 0.625em;
+  bottom: 0.625em;
+  color: white;
+  background-color: #212c3c;
+}
+
+.card:hover::after {
+  bottom: 0;
+  opacity: 1;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card:active::after {
+  content: ":D";
+  height: 3.125em;
+}
+
+.image {
+  background: rgb(241, 241, 241);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.image img {
+  width: 15em;
+  height: 13.1em;
+}
+
+.footer {
+  margin-right: 200px;
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 50px 10px 50px;
+  background-color: #31394d;
+}
+
+.footer h1 {
+  font-size: 60px;
+  color: white;
+  background-color: transparent;
+}
+
+.footer .socmed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.footer .socmed .soc-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.footer .socmed .soc-list p {
+  background-color: transparent;
+  font-size: 18px;
+  color: white;
+}
+
+.footer .socmed img {
+  background-color: transparent;
+  width: 30px;
+}
+
+.footer .copy {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  background-color: transparent;
+}
+
+.footer .copy p {
+  background-color: transparent;
+  color: white;
+}
+
+#htc-image {
+  width: 900px;
+}
+
+#htc-mobile {
+  display: none;
+}
+
+/* Media queries untuk tampilan mobile */
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    right: -200px; /* Menyembunyikan sidebar di luar layar */
+  }
+
+  .main {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin-right: 0;
+    padding: 0; /* Menghapus margin kanan untuk konten utama */
+  }
+
+  .main .home .logo {
+    padding: 15px;
+  }
+
+  .main .home .bot-left {
+    margin-top: 350px;
+    position: relative;
+    padding-right: 30px;
+  }
+
+  .main .home .bot-left .tagline {
+    font-size: 15px;
+  }
+
+  .main .home .bot-left .title {
+    font-size: 85px;
+  }
+
+  #acc {
+    font-size: 40px;
+  }
+
+  .main .home .hand {
+    display: none;
+  }
+
+  .main .about {
+    margin-top: 100px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .main .about h1 {
+    font-size: 50px;
+  }
+
+  .main .about p {
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .main .about .img-about img {
+    width: 300px;
+  }
+
+  .main .htc {
+    margin-top: 110px;
+    padding: 20px;
+  }
+
+  #htc-image {
+    display: none;
+  }
+
+  #htc-mobile {
+    display: block;
+    width: 320px;
+  }
+
+  .main .htc h1 {
+    font-size: 50px;
+  }
+
+  .main .products {
+    margin-top: 110px;
+    padding: 20px;
+  }
+
+  .main .products h1 {
+    font-size: 50px;
+  }
+
+  .card {
+    width: 9.2rem;
+    height: 10.5rem;
+  }
+
+  .card .image img {
+    width: 133px;
+    height: 125px;
+  }
+
+  .card::after {
+    width: 88%;
+  }
+
+  .footer {
+    margin-right: 0;
+  }
+
+  .footer h1 {
+    font-size: 50px;
+  }
+
+  .footer .copy p {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .footer .copy {
+    gap: 10px;
+  }
+}
